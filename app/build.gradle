@@ -71,6 +71,6 @@ dependencies {
     implementation 'androidx.media3:media3-ui:1.1.0'
 
     // Third YouTube Library
-    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.3'
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:12.1.0'
 
 }

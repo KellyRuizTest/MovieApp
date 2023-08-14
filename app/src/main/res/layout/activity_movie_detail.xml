@@ -6,21 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".MovieDetailActivity">
 
-<!--    <VideoView-->
+<!--    <androidx.media3.ui.PlayerView-->
 <!--        android:id="@+id/trailer"-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="200dp"-->
 <!--        app:layout_constraintEnd_toEndOf="parent"-->
 <!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        />-->
 
-    <androidx.media3.ui.PlayerView
+    <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/trailer"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:autoPlay="false"
+
         />
 
 

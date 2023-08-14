@@ -4,11 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import androidx.media3.common.MediaItem
-import androidx.media3.common.MimeTypes
-import androidx.media3.datasource.DefaultDataSource
 import androidx.media3.exoplayer.ExoPlayer
-import androidx.media3.exoplayer.source.ProgressiveMediaSource
 import androidx.media3.ui.PlayerView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.carousel.CarouselLayoutManager
@@ -19,6 +15,10 @@ import com.loder.movieapp.mvvm.MovieViewModel
 import com.loder.movieapp.mvvm.SimilarViewModel
 import com.loder.movieapp.mvvm.VideoViewModel
 import com.loder.movieapp.util.Constants
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstants
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
 class MovieDetailActivity : AppCompatActivity() {
 
@@ -32,6 +32,8 @@ class MovieDetailActivity : AppCompatActivity() {
     private lateinit var id: String
     private lateinit var playerView: PlayerView
     private lateinit var player: ExoPlayer
+
+    //private lateinit var youTubePlayerView: YouTubePlayerView
 
     private val TAG: String = "MovieDetailActivity"
 
@@ -52,7 +54,8 @@ class MovieDetailActivity : AppCompatActivity() {
         }
 
         setDataRecyclerSimilar()
-        getVideo()
+        // getVideo()
+        getVideoFromYT()
     }
 
     private fun fetData(it: DetailMovieModel?) {
@@ -75,12 +78,13 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
-    fun getVideo() {
+    /*fun getVideo() {
         videoViewModel = ViewModelProvider(this)[VideoViewModel::class.java]
         videoViewModel.getVideos(this.id)
         videoViewModel.observeSimilarLiveData().observe(this) {
-            val videoUrl = Constants.YT_PATH + it[it.count() - 1].key
 
+            val keyVideo = it[it.count() - 1].key
+            val videoUrl = Constants.YT_PATH + keyVideo
             Log.e(TAG, videoUrl)
 
             playerView = binding.trailer
@@ -100,6 +104,31 @@ class MovieDetailActivity : AppCompatActivity() {
             player.setMediaItem(mediaItemm)
             player.prepare()
             player.play()
+        }
+    }*/
+
+    fun getVideoFromYT() {
+        videoViewModel = ViewModelProvider(this)[VideoViewModel::class.java]
+        videoViewModel.getVideos(this.id)
+        videoViewModel.observeSimilarLiveData().observe(this) {
+            val keyVideo = it[it.count() - 1].key
+            val videoUrl = Constants.YT_PATH + keyVideo
+
+            val youTubePlayerView: YouTubePlayerView = binding.trailer
+            lifecycle.addObserver(youTubePlayerView)
+            youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+
+                override fun onReady(youTubePlayera: YouTubePlayer) {
+                    youTubePlayera.loadVideo(keyVideo, 0F)
+                }
+
+                override fun onStateChange(
+                    youTubePlayer: YouTubePlayer,
+                    state: PlayerConstants.PlayerState,
+                ) {
+                    super.onStateChange(youTubePlayer, state)
+                }
+            })
         }
     }
 }
