@@ -6,25 +6,32 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.carousel.CarouselLayoutManager
 import com.loder.movieapp.adapter.MovieAdapter
-import com.loder.movieapp.adapter.UpcommingRatedAdapter
+import com.loder.movieapp.adapter.TopRatedAdapter
 import com.loder.movieapp.databinding.ActivityMainBinding
 import com.loder.movieapp.mvvm.MovieViewModel
 import com.loder.movieapp.mvvm.TopRatedViewModel
-import java.lang.Math.abs
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: com.loder.movieapp.databinding.ActivityMainBinding
+
+    // ViewModel
     private lateinit var movieviewModel: MovieViewModel
     private lateinit var topRatedviewModel: TopRatedViewModel
+
+    // Adapters
     private lateinit var movieAdapter: MovieAdapter
-    private lateinit var topRatedAdapter: UpcommingRatedAdapter
-    private lateinit var upcommingAdapter: UpcommingRatedAdapter
+    private lateinit var topRatedAdapter: TopRatedAdapter
+    private lateinit var upcommingAdapter: TopRatedAdapter
+
+    // Recyclers
     private lateinit var movieRecycler: RecyclerView
+    private lateinit var topRatedRecycler: RecyclerView
+
+    // ViewPager
     private lateinit var topRatedPager: ViewPager2
     private lateinit var upcommingPager: ViewPager2
 
@@ -34,9 +41,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setDataRecyclerView()
-        setDataRatedPager()
-        // setDataUpcommingPager()
-        setUpTransformer()
+        setDataRecyclerRatedPager()
     }
 
     fun setDataRecyclerView() {
@@ -55,48 +60,15 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-    fun setDataRatedPager() {
-        topRatedPager = binding.viewPagerToprated
+    fun setDataRecyclerRatedPager() {
+        topRatedRecycler = binding.viewPagerToprated
+        topRatedRecycler.layoutManager = CarouselLayoutManager()
 
         topRatedviewModel = ViewModelProvider(this)[TopRatedViewModel::class.java]
         topRatedviewModel.getTopRated()
-        topRatedviewModel.observeRatedLiveData().observe(
-            this,
-        ) {
-            topRatedAdapter = UpcommingRatedAdapter(it)
-            topRatedPager.adapter = topRatedAdapter
-            topRatedPager.offscreenPageLimit = 3
-            topRatedPager.clipToPadding = false
-            topRatedPager.clipChildren = false
-            topRatedPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
-        }
-    }
-
-    private fun setUpTransformer() {
-        val transformer = CompositePageTransformer()
-        transformer.addTransformer(MarginPageTransformer(40))
-        transformer.addTransformer { page, position ->
-            val r = 1 - abs(position)
-            page.scaleY = 0.95f + r * 0.05f
-        }
-
-        topRatedPager.setPageTransformer(transformer)
-        // upcommingPager.setPageTransformer(transformer)
-    }
-
-    fun setDataUpcommingPager() {
-        upcommingPager = binding.viewPagerUpcoming
-
-        topRatedviewModel.getUpcomming()
-        topRatedviewModel.observeUpcommingLiveData().observe(
-            this,
-        ) {
-            upcommingAdapter = UpcommingRatedAdapter(it)
-            upcommingPager.adapter = upcommingAdapter
-            upcommingPager.offscreenPageLimit = 3
-            upcommingPager.clipToPadding = false
-            upcommingPager.clipChildren = false
-            upcommingPager.getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+        topRatedviewModel.observeRatedLiveData().observe(this) {
+            topRatedAdapter = TopRatedAdapter(it)
+            topRatedRecycler.adapter = topRatedAdapter
         }
     }
 }

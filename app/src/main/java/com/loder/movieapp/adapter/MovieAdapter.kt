@@ -23,7 +23,7 @@ class MovieAdapter(private val movieList: List<Result>) : RecyclerView.Adapter<M
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Picasso.get().load(Constants.IMAGE_PATH + movieList.get(position).posterPath)
             .placeholder(R.drawable.user_placeholder)
-            .resize(200, 240).onlyScaleDown()
+            .resize(200, 220).onlyScaleDown()
             .into(holder.binding.imageMovie)
 
         holder.binding.nameMovie.text = movieList[position].title

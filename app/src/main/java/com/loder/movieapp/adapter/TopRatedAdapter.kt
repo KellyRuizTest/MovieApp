@@ -11,7 +11,7 @@ import com.loder.movieapp.databinding.ItemViewPagerBinding
 import com.loder.movieapp.util.Constants
 import com.squareup.picasso.Picasso
 
-class UpcommingRatedAdapter(private val movieList: List<Result>) : RecyclerView.Adapter<UpcommingRatedAdapter.ViewHolder>() {
+class TopRatedAdapter(private val movieList: List<Result>) : RecyclerView.Adapter<TopRatedAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemViewPagerBinding.inflate(LayoutInflater.from(parent.context), parent, false)
