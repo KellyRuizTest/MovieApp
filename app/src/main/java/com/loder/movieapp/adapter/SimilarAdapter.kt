@@ -1,8 +1,10 @@
 package com.loder.movieapp.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.loder.movieapp.MovieDetailActivity
 import com.loder.movieapp.R
 import com.loder.movieapp.data.model.Result
 import com.loder.movieapp.databinding.ItemViewPagerSimilarBinding
@@ -22,12 +24,12 @@ class SimilarAdapter(private val movieList: List<Result>) : RecyclerView.Adapter
             .resize(300, 300).onlyScaleDown()
             .into(holder.binding.imagePagerSimilar)
 
-//        holder.binding.cardPagerSimilar.setOnClickListener { it ->
-//            val idMovie = movieList.get(position).id.toString()
-//            val intent = Intent(it.context, MovieDetailActivity::class.java)
-//            intent.putExtra("idMovie", idMovie)
-//            it.context.startActivity(intent)
-//        }
+        holder.binding.cardPagerSimilar.setOnClickListener { it ->
+            val idMovie = movieList.get(position).id.toString()
+            val intent = Intent(it.context, MovieDetailActivity::class.java)
+            intent.putExtra("idMovie", idMovie)
+            it.context.startActivity(intent)
+        }
     }
 
     override fun getItemCount(): Int {

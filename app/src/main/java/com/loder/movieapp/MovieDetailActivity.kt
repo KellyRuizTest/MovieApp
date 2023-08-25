@@ -78,35 +78,6 @@ class MovieDetailActivity : AppCompatActivity() {
         }
     }
 
-    /*fun getVideo() {
-        videoViewModel = ViewModelProvider(this)[VideoViewModel::class.java]
-        videoViewModel.getVideos(this.id)
-        videoViewModel.observeSimilarLiveData().observe(this) {
-
-            val keyVideo = it[it.count() - 1].key
-            val videoUrl = Constants.YT_PATH + keyVideo
-            Log.e(TAG, videoUrl)
-
-            playerView = binding.trailer
-
-            player = ExoPlayer.Builder(this).build()
-            playerView.player = player
-
-            val mediaItemm = MediaItem.Builder()
-                .setUri(videoUrl)
-                .setMimeType(MimeTypes.APPLICATION_MP4)
-                .build()
-
-            val mediaSource = ProgressiveMediaSource.Factory(
-                DefaultDataSource.Factory(this),
-            ).createMediaSource(mediaItemm)
-
-            player.setMediaItem(mediaItemm)
-            player.prepare()
-            player.play()
-        }
-    }*/
-
     fun getVideoFromYT() {
         videoViewModel = ViewModelProvider(this)[VideoViewModel::class.java]
         videoViewModel.getVideos(this.id)

@@ -6,15 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MovieDetailActivity">
 
-<!--    <androidx.media3.ui.PlayerView-->
-<!--        android:id="@+id/trailer"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="200dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent"-->
-<!--        />-->
-
     <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
         android:id="@+id/trailer"
         android:layout_width="match_parent"
@@ -22,16 +13,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:autoPlay="false"
-
-        />
+        app:autoPlay="false" />
 
 
         <TextView
             android:id="@+id/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="6dp"
+            android:layout_marginStart="8dp"
             android:hint="Title"
             android:textSize="22dp"
             android:textStyle="bold"
@@ -53,6 +43,7 @@
                 style="@style/TextAppearance.Material3.BodyMedium"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
                 android:hint="2013" />
 
             <TextView
@@ -69,7 +60,7 @@
             android:id="@+id/download"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="0dp"
             android:layout_marginEnd="4dp"
             android:layout_marginBottom="4dp"
@@ -84,10 +75,9 @@
             android:id="@+id/description_readmore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
+            android:layout_marginStart="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-
             app:layout_constraintTop_toBottomOf="@id/download"
             app:readLessText="@string/read_less"
             app:readLessTextAppearance="@style/TextAppearance.AppCompat.Small"
@@ -99,49 +89,58 @@
             app:readMoreOverflow="ellipsis"
             app:readMoreText="@string/read_more"
             app:readMoreTextAppearance="@style/TextAppearance.AppCompat.Small"
-
             app:readMoreTextSize="12sp"
             app:readMoreTextStyle="bold"
             app:readMoreTextUnderline="true"
             app:readMoreToggleArea="all"
             app:readMoreTypeface="normal" />
 
-        <LinearLayout
+
+        <HorizontalScrollView
             android:id="@+id/chips"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/description_readmore">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip1"
-                android:layout_width="wrap_content"
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="genre1"
-                android:elevation="1dp"
-                app:chipCornerRadius="6dp"
-                android:textSize="12sp" />
+                android:textAlignment="center"
+                app:chipSpacing="2dp"
+                app:singleLine="true">
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="genre2"
-                android:textSize="12sp" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:elevation="1dp"
+                    android:text="genre1"
+                    android:textSize="12sp"
+                    app:chipCornerRadius="6dp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:text="genre3"
-                android:textSize="12sp" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="genre2"
+                    android:textSize="12sp" />
 
-        </LinearLayout>
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="genre3"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
 
         <LinearLayout
             android:id="@+id/social"
