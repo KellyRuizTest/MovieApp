@@ -8,9 +8,12 @@ import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.carousel.CarouselLayoutManager
+import com.google.android.material.chip.Chip
 import com.loder.movieapp.adapter.SimilarAdapter
 import com.loder.movieapp.data.model.DetailMovieModel
+import com.loder.movieapp.data.model.ProductionCountry
 import com.loder.movieapp.databinding.ActivityMovieDetailBinding
+import com.loder.movieapp.databinding.ChoiceChipBinding
 import com.loder.movieapp.mvvm.MovieViewModel
 import com.loder.movieapp.mvvm.SimilarViewModel
 import com.loder.movieapp.mvvm.VideoViewModel
@@ -32,8 +35,6 @@ class MovieDetailActivity : AppCompatActivity() {
     private lateinit var id: String
     private lateinit var playerView: PlayerView
     private lateinit var player: ExoPlayer
-
-    //private lateinit var youTubePlayerView: YouTubePlayerView
 
     private val TAG: String = "MovieDetailActivity"
 
@@ -63,7 +64,27 @@ class MovieDetailActivity : AppCompatActivity() {
             binding.title.text = it.title
             binding.descriptionReadmore.text = it.overview
             binding.anio.text = it.releaseDate.slice(0..3)
+            val produCountry : ProductionCountry = it.productionCountries.get(0)
+            binding.duration.text = produCountry.iso31661
+
+            val listGenres = it.genres
+
+            for (chip in listGenres) {
+                val genreChip = createChip(chip.name)
+                binding.chipGroup.addView(genreChip)
+
+
+            }
+
         }
+    }
+
+    private fun createChip(name: String): Chip {
+
+        val chip = ChoiceChipBinding.inflate(layoutInflater).root
+        chip.text = name
+        return chip
+
     }
 
     fun setDataRecyclerSimilar() {

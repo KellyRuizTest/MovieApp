@@ -107,42 +107,44 @@
             app:layout_constraintTop_toBottomOf="@id/description_readmore">
 
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
+                app:singleSelection="true"
                 app:chipSpacing="2dp">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    style="@style/Widget.Material3.Chip.Assist.Elevated"
-                    android:text="genre1"
-                    android:textSize="11sp"
-                    app:chipCornerRadius="20dp" />
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/chip1"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    style="@style/Widget.Material3.Chip.Assist.Elevated"-->
+<!--                    android:text="genre1"-->
+<!--                    android:textSize="11sp"-->
+<!--                    app:chipCornerRadius="20dp" />-->
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="genre2"
-                    style="@style/Widget.Material3.Chip.Assist.Elevated"
-                    android:textSize="11sp"
-                    app:chipCornerRadius="20dp"
-                    />
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/chip2"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    android:text="genre2"-->
+<!--                    style="@style/Widget.Material3.Chip.Assist.Elevated"-->
+<!--                    android:textSize="11sp"-->
+<!--                    app:chipCornerRadius="20dp"-->
+<!--                    />-->
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="genre3"
-                    style="@style/Widget.Material3.Chip.Assist.Elevated"
-                    android:textSize="11sp"
-                    app:chipCornerRadius="20dp"
-                    />
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/chip3"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginStart="4dp"-->
+<!--                    android:text="genre3"-->
+<!--                    style="@style/Widget.Material3.Chip.Assist.Elevated"-->
+<!--                    android:textSize="11sp"-->
+<!--                    app:chipCornerRadius="20dp"-->
+<!--                    />-->
 
             </com.google.android.material.chip.ChipGroup>
 
