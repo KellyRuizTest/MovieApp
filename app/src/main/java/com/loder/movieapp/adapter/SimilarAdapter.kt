@@ -3,6 +3,7 @@ package com.loder.movieapp.adapter
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.loder.movieapp.MovieDetailActivity
 import com.loder.movieapp.R
@@ -28,8 +29,11 @@ class SimilarAdapter(private val movieList: List<Result>) : RecyclerView.Adapter
             val idMovie = movieList.get(position).id.toString()
             val intent = Intent(it.context, MovieDetailActivity::class.java)
             intent.putExtra("idMovie", idMovie)
+            //Toast.makeText(it.context, "Select:" + idMovie, Toast.LENGTH_LONG).show()
             it.context.startActivity(intent)
         }
+
+
     }
 
     override fun getItemCount(): Int {

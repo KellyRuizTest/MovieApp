@@ -64,7 +64,7 @@ class MovieDetailActivity : AppCompatActivity() {
             binding.title.text = it.title
             binding.descriptionReadmore.text = it.overview
             binding.anio.text = it.releaseDate.slice(0..3)
-            val produCountry : ProductionCountry = it.productionCountries.get(0)
+            val produCountry: ProductionCountry = it.productionCountries.get(0)
             binding.duration.text = produCountry.iso31661
 
             val listGenres = it.genres
@@ -72,19 +72,14 @@ class MovieDetailActivity : AppCompatActivity() {
             for (chip in listGenres) {
                 val genreChip = createChip(chip.name)
                 binding.chipGroup.addView(genreChip)
-
-
             }
-
         }
     }
 
     private fun createChip(name: String): Chip {
-
         val chip = ChoiceChipBinding.inflate(layoutInflater).root
         chip.text = name
         return chip
-
     }
 
     fun setDataRecyclerSimilar() {
