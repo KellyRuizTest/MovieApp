@@ -1,7 +1,9 @@
 package com.loder.movieapp
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.media3.exoplayer.ExoPlayer
@@ -11,7 +13,6 @@ import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.chip.Chip
 import com.loder.movieapp.adapter.SimilarAdapter
 import com.loder.movieapp.data.model.DetailMovieModel
-import com.loder.movieapp.data.model.ProductionCountry
 import com.loder.movieapp.databinding.ActivityMovieDetailBinding
 import com.loder.movieapp.databinding.ChoiceChipBinding
 import com.loder.movieapp.mvvm.MovieViewModel
@@ -45,7 +46,7 @@ class MovieDetailActivity : AppCompatActivity() {
 
         id = intent.getStringExtra("idMovie").toString()
         Log.i(TAG, "id_value:$id")
-        viewModel = ViewModelProvider(this)[MovieViewModel::class.java]
+        viewModel = ViewModelProvider(this).get(MovieViewModel::class.java)
 
         viewModel.getDetailMovie(id)
         viewModel.observeDetailMovieLiveData().observe(
@@ -63,9 +64,22 @@ class MovieDetailActivity : AppCompatActivity() {
         if (it != null) {
             binding.title.text = it.title
             binding.descriptionReadmore.text = it.overview
+            binding.descriptionReadmore.visibility = View.VISIBLE
+            binding.textReadMore.visibility = View.VISIBLE
+            binding.textReadMore.setOnClickListener {
+                if (binding.textReadMore.text.toString().equals("Read More")) {
+                    binding.descriptionReadmore.maxLines = Integer.MAX_VALUE
+                    binding.descriptionReadmore.ellipsize = null
+                    binding.textReadMore.text = "Read Less"
+                } else {
+                    binding.descriptionReadmore.maxLines = 3
+                    binding.descriptionReadmore.ellipsize = TextUtils.TruncateAt.END
+                    binding.textReadMore.text = "Read More"
+                }
+            }
             binding.anio.text = it.releaseDate.slice(0..3)
-            val produCountry: ProductionCountry = it.productionCountries.get(0)
-            binding.duration.text = produCountry.iso31661
+            val language = it.originalLanguage.capitalize()
+            binding.language.text = language
 
             val listGenres = it.genres
 
