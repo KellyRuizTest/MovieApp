@@ -55,6 +55,7 @@
                 android:layout_height="wrap_content"
                 android:hint="2013"
                 style="@style/TextAppearance.Material3.BodyMedium"
+                android:textStyle="bold"
                 />
 
             <ImageView
@@ -63,7 +64,7 @@
                 android:layout_margin="2dp"
                 android:src="@drawable/separator"
                 android:layout_gravity="center"
-                app:tint="@color/design_default_color_primary" />
+                app:tint="@android:color/holo_blue_dark" />
 
 
             <ImageView
@@ -88,7 +89,7 @@
                 android:layout_margin="2dp"
                 android:src="@drawable/separator"
                 android:layout_gravity="center"
-                app:tint="@color/design_default_color_primary"/>
+                app:tint="@android:color/holo_blue_dark"/>
 
             <TextView
                 android:id="@+id/language"
@@ -96,6 +97,7 @@
                 android:layout_height="wrap_content"
                 android:hint="En"
                 style="@style/TextAppearance.Material3.BodyMedium"
+                android:textStyle="bold"
                 />
 
         </LinearLayout>
@@ -129,37 +131,10 @@
         android:layout_marginTop="2dp"
         android:text="Read More"
         android:visibility="gone"
-        android:textColor="@color/design_default_color_primary_dark"
+        android:textColor="@android:color/holo_blue_dark"
         app:layout_constraintStart_toStartOf="@+id/description_readmore"
         app:layout_constraintTop_toBottomOf="@+id/description_readmore"
         />
-
-
-
-<!--    <com.webtoonscorp.android.readmore.ReadMoreTextView-->
-<!--        android:id="@+id/description_readmore"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginStart="8dp"-->
-<!--        android:layout_marginTop="8dp"-->
-<!--        app:layout_constraintEnd_toEndOf="parent"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toBottomOf="@id/div_specs"-->
-<!--        app:readLessText="@string/read_less"-->
-<!--        app:readLessTextAppearance="@style/TextAppearance.AppCompat.Small"-->
-<!--        app:readLessTextSize="13sp"-->
-<!--        app:readLessTextStyle="bold"-->
-<!--        app:readLessTextUnderline="true"-->
-<!--        app:readLessTypeface="normal"-->
-<!--        app:readMoreMaxLines="3"-->
-<!--        app:readMoreOverflow="ellipsis"-->
-<!--        app:readMoreText="@string/read_more"-->
-<!--        app:readMoreTextAppearance="@style/TextAppearance.AppCompat.Small"-->
-<!--        app:readMoreTextSize="12sp"-->
-<!--        app:readMoreTextStyle="bold"-->
-<!--        app:readMoreTextUnderline="true"-->
-<!--        app:readMoreToggleArea="all"-->
-<!--        app:readMoreTypeface="normal" />-->
 
         <HorizontalScrollView
             android:id="@+id/chips"

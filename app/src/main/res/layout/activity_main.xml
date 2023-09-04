@@ -37,8 +37,9 @@
         style="@style/TextAppearance.Material3.TitleMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:padding="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="6dp"
+
         android:text="@string/recomended"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/topBar" />
@@ -60,8 +61,7 @@
         style="@style/TextAppearance.Material3.TitleMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="4dp"
-        android:padding="2dp"
+        android:layout_marginStart="8dp"
         android:text="@string/popular"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@+id/viewPager_toprated" />

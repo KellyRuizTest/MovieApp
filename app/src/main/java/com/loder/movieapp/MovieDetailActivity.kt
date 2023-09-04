@@ -23,6 +23,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.PlayerConstan
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+import java.util.Locale
+import kotlin.math.roundToInt
 
 class MovieDetailActivity : AppCompatActivity() {
 
@@ -77,6 +79,8 @@ class MovieDetailActivity : AppCompatActivity() {
                     binding.textReadMore.text = "Read More"
                 }
             }
+            val rate = (it.voteAverage * 100.0).roundToInt() / 100.0
+            binding.rating.text = rate.toString()
             binding.anio.text = it.releaseDate.slice(0..3)
             val language = it.originalLanguage.capitalize()
             binding.language.text = language
