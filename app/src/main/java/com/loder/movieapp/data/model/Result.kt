@@ -1,8 +1,11 @@
 package com.loder.movieapp.data.model
 
-
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
+@Entity(tableName = "ResultMovie")
 data class Result(
     @SerializedName("adult")
     val adult: Boolean,
@@ -10,6 +13,7 @@ data class Result(
     val backdropPath: String,
     @SerializedName("genre_ids")
     val genreIds: List<Int>,
+    @PrimaryKey
     @SerializedName("id")
     val id: Int,
     @SerializedName("original_language")
@@ -31,5 +35,5 @@ data class Result(
     @SerializedName("vote_average")
     val voteAverage: Double,
     @SerializedName("vote_count")
-    val voteCount: Int
-)
+    val voteCount: Int,
+) : Serializable

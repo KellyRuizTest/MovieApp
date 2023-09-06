@@ -15,7 +15,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            style="@style/TextAppearance.Material3.TitleMedium"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -34,14 +33,14 @@
 
     <TextView
         android:id="@+id/rec_section"
-        style="@style/TextAppearance.Material3.TitleMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginBottom="6dp"
-
-        android:text="@string/recomended"
+        android:fontFamily="@font/roboto_slab"
+        android:textSize="18sp"
         android:textStyle="bold"
+        android:text="@string/recomended"
         app:layout_constraintTop_toBottomOf="@+id/topBar" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -50,6 +49,7 @@
         android:layout_height="196dp"
         android:clipChildren="false"
         android:clipToPadding="false"
+        android:layout_marginTop="2dp"
         app:layout_constraintTop_toBottomOf="@+id/rec_section" />
 
     <!--        <ScrollView-->
@@ -58,12 +58,14 @@
     <!--            >-->
     <TextView
         android:id="@+id/pop_section"
-        style="@style/TextAppearance.Material3.TitleMedium"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:text="@string/popular"
+        android:textSize="18sp"
         android:textStyle="bold"
+        android:layout_marginTop="2dp"
+        android:fontFamily="@font/roboto_slab"
         app:layout_constraintTop_toBottomOf="@+id/viewPager_toprated" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -71,6 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/pop_section"
+        android:layout_marginTop="2dp"
         tools:listitem="@layout/movie_layout" />
 
     <!--    </ScrollView>-->

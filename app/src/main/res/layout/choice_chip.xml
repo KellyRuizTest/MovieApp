@@ -8,4 +8,5 @@
     android:layout_marginStart="4dp"
     android:text=""
     android:textSize="12sp"
+    android:fontFamily="@font/roboto_slab_light"
     app:chipCornerRadius="20dp" />
