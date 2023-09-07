@@ -67,4 +67,5 @@ class MovieViewModel : ViewModel() {
     fun observeDetailMovieLiveData(): LiveData<DetailMovieModel> {
         return movieDetailData
     }
+
 }

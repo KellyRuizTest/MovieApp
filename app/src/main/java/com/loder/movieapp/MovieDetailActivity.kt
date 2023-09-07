@@ -11,6 +11,7 @@ import androidx.media3.ui.PlayerView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.carousel.CarouselLayoutManager
 import com.google.android.material.chip.Chip
+import com.google.android.material.snackbar.Snackbar
 import com.loder.movieapp.adapter.SimilarAdapter
 import com.loder.movieapp.data.model.DetailMovieModel
 import com.loder.movieapp.databinding.ActivityMovieDetailBinding
@@ -56,8 +57,12 @@ class MovieDetailActivity : AppCompatActivity() {
             fetData(it)
         }
 
+        binding.fabWatchlist.setOnClickListener {
+            Snackbar.make(binding.title, "Added to Watchlist", Snackbar.LENGTH_LONG)
+                .show()
+        }
+
         setDataRecyclerSimilar()
-        // getVideo()
         getVideoFromYT()
     }
 
